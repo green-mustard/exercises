@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    div {
+      width: 80px;
+      height: 80px; 
+      margin: 200px auto;
+    }
+
+    input[type=text] {
+      width: 50px;
+      height: 44px;
+      outline: none;
+      border: 1px solid #ccc;
+      text-align: center;
+      border-right: 0;
+    }
+
+    input[type=button] {
+      height: 24px;
+      width: 22px;
+      cursor: pointer;
+    }
+
+    input {
+      float: left;
+      border: 1px solid #ccc;
+
+    }
+  </style>
+</head>
+
+<body>
+  <div>
+    <input type="text" id="total" value="1" readonly>
+    <input type="button" value="+" id="add">
+    <input type="button" value="-" id="reduce" disabled>
+    <script>
+      //1. 获取元素 数字框、加减按钮
+      let num = document.querySelector('input[type=text]')
+      let btn1 = document.querySelector('#add')
+      let btn2 = document.querySelector('#reduce')
+      //2. 绑定事件
+      btn1.addEventListener ('click', function() {
+        // num.value = +(num.value) + 1
+        //获得的num.value的值是字符型
+        num.value++ //自加有隐式转换，把字符型转换成了数字型
+      })
+      btn2.addEventListener ('click', function() {
+        // num.value = +(num.value) - 1
+        num.value--
+      })
+
+    </script>
+  </div>
+</body>
+
+</html>

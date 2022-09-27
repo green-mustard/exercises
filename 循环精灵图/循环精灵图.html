@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+    li {
+        list-style: none;
+    }
+    .box {
+        width: 250px;
+        margin: 100px auto;
+    }
+    .box li {
+        float: left;
+        width: 24px;
+        height: 24px;
+        background-color: cyan;
+        margin: 15px;
+        background: url(./sprite.png) no-repeat;
+    }
+</style>
+<body>
+    <div class="box">
+        <ul>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+
+    <script>
+        let li = document.querySelectorAll('li')
+        for (let i = 0; i < li.length; i++) {    //i<=li.length会报错,因为在执行完i = li.length次循环后还会再执行一次循环，这次循环里数组中没有对应的元素，获取不到元素就会报错
+            li[i].style.backgroundPosition = `0 ${-i*44}px`
+        }
+    </script>
+</body>
+</html>

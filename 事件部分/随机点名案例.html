@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        h2 {
+            margin: 100px auto 80px;
+            width: 100px;
+            height: 30px;
+
+        }
+        .box {
+            margin: 0 auto 20px;
+            width: 350px;
+            height: 50px;
+            font-size: 26px;
+        }
+        span {
+            color: red;
+        }
+        .btn {
+            display: flex;
+            justify-content: space-around;
+            width: 500px;
+            height: 100px;
+            margin: 0 auto;
+        }
+        button {
+            width: 120px;
+            height: 35px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h2>随机点名</h2>
+    <div class="box">
+        名字是：<span class="uname">这里显示姓名</span>
+    </div>
+    <div class="btn">
+        <button class="start">开始</button>
+        <button class="end">结束</button>
+    </div>
+
+    <script>
+        // 数据数组
+        let arr = ['马超', '黄忠', '赵云', '关羽', '张飞']
+        function getRandom(min, max) {
+            return Math.floor(Math.random() * (max - min + 1)) + min
+        }
+
+        //1. 获取需要的元素
+        let content = document.querySelector ('.uname');
+        let start = document.querySelector('.start');
+        let end = document.querySelector('.end');
+        //2. 监听事件
+        start.addEventListener ('click', function() {
+            let random = getRandom(0, arr.length - 1)
+            setInterval (random, 500)
+            content.innerHTML = arr[random]
+        })
+
+    </script>
+</body>
+</html>

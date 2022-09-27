@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" />
+
+    <script>
+        let str = ""; //str变量用于存储密码
+        //获取input元素
+        let input = document.getElementsByTagName("input")[0];
+        //获取span元素
+        input.oninput = function(evt) {
+          let val = this.value; //取到输入框的值
+          if (val.length > str.length) {
+            //输入值
+            str += val.charAt(val.length - 1);
+          } else {
+            //回删值
+            str = str.substr(0, val.length);
+          }
+          //将输入框除最后一位的字符替换成*
+          this.value =
+            val.substr(0, val.length - 1).replace(/./g, "●") +
+            val.charAt(val.length - 1);
+          /* 取当前输入框长度，用于判断是否正在输入
+          停止输入时，一秒后将最后一个字符变成*号 */
+          let len = this.value.length;
+          setTimeout(() => {
+            /*这时的this指向在延迟器触发时输入框的状态，
+          而不是延迟器创建时的状态*/
+            if (this.value.length == len) {
+              //一秒后输入框的值长度不变，将所有字符替换为*
+              this.value = this.value.replace(/./g, "●");
+            }
+          }, 1000);
+        };
+      </script>
+</body>
+</html>

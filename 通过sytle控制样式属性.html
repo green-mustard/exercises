@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: cyan;
+        }
+
+        .active {
+            width: 300px;
+            height: 300px;
+            background-color: cornflowerblue;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        我是一个盒子
+    </div>
+
+    <script>
+        //获取元素
+        let box = document.querySelector('div')
+        //通过JS改变内容、背景颜色、样式等
+        // box.innerText = '我是一个有意思的盒子'
+        // box.style.backgroundColor = 'pink'
+        // box.style.width = '400px'
+        // box.style.marginTop = '100px'
+
+        //追加类名  add是方法，后面要加小括号。类名记得要放在引号''内,且不加点
+        box.classList.add('active')
+
+        //移除类名 remove
+        // box.classList.remove('active')
+
+        //切换类，如果原来有这个类，就删除掉，如果原来没有就新增。
+        box.classList.toggle('null')
+    </script>
+</body>
+</html>

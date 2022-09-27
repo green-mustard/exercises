@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    table {
+      border-collapse: collapse;
+      border-spacing: 0;
+      border: 1px solid #c0c0c0;
+      width: 500px;
+      margin: 100px auto;
+      text-align: center;
+    }
+
+    th {
+      background-color: #09c;
+      font: bold 16px "微软雅黑";
+      color: #fff;
+      height: 24px;
+    }
+
+    td {
+      border: 1px solid #d0d0d0;
+      color: #404040;
+      padding: 10px;
+    }
+
+    .allCheck {
+      width: 80px;
+    }
+  </style>
+</head>
+
+<body>
+  <table>
+    <tr>
+      <th class="allCheck">
+        <input type="checkbox" name="" id="checkAll"> <span class="all">全选</span>
+      </th>
+      <th>商品</th>
+      <th>商家</th>
+      <th>价格</th>
+    </tr>
+    <tr>
+      <td>
+        <input type="checkbox" name="check" class="ck">
+      </td>
+      <td>小米手机</td>
+      <td>小米</td>
+      <td>￥1999</td>
+    </tr>
+    <tr>
+      <td>
+        <input type="checkbox" name="check" class="ck">
+      </td>
+      <td>小米净水器</td>
+      <td>小米</td>
+      <td>￥4999</td>
+    </tr>
+    <tr>
+      <td>
+        <input type="checkbox" name="check" class="ck">
+      </td>
+      <td>小米电视</td>
+      <td>小米</td>
+      <td>￥5999</td>
+    </tr>
+  </table>
+  <script>
+    //获取元素全选总开关
+    let selectAll = document.querySelector('#checkAll')
+    //获取其余所有选择框
+    let selects = document.querySelectorAll ('.ck')
+    //获取‘全选’文字
+    let sta = document.querySelector ('.all')
+    //绑定事件 勾选和取消勾选 checked
+    selectAll.addEventListener ('click', function() {
+      //当点击全选开关时，需要把选中状态给所有的选框
+      //因为选矿是在伪数组里面， 所以需要用遍历的方式，依次修改选框的选中状态
+        for (i = 0; i < selects.length; i++) {
+          selects[i].checked = selectAll.checked
+        }
+        //当全选按钮处于选中状态时，文字改为‘取消’，否则为‘全选’
+        if (selectAll.checked) {
+          sta.innerHTML = '取消'
+        } else {
+          sta.innerHTML = '全选'
+        }
+      })
+      //当下面的选框都为选中状态的时候，反过来将最上层的全选按钮的状态也改为选中
+      //思路：1、先遍历下面所有的checkbox，添加点击事件
+      //     2、在事件内部，遍历所有的checkbox状态，只要有一个为false，就将全选按钮的状态改为选中，并且将文字改为取消
+
+      //同时给多个元素绑定相同事件
+      for (let i = 0; i < selects.length; i++) {
+        selects[i].addEventListener ('click', function() {
+          //只要点击任意一个小按钮，都要遍历所有小按钮的状态 
+          for (let j = 0; j < selects.length; j++) {
+            if (selects[j].checked === false) {
+              selectAll.checked = false
+              sta.innerHTML = '全选'
+            //如果有false 则退出循环
+              return
+            }
+          }
+          //当循环结束，如果代码走到这里，说明没有false，所有小按钮都被选中了，则将全选按钮的状态改为选中，并且将文字改为取消
+          selectAll.checked = true
+          sta.innerHTML = '取消'
+        })
+      }
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        img {
+            width: 500px;
+            height: 300px;
+        }
+    </style>
+</head>
+<body>
+    <img src="F:/个人/前端学习/正在学的/2.Web APIs实用案例/Web APIs—资料/day01/day01/代码/images/1.webp" alt="">
+
+    <script>
+        //定义随机图片序号的函数并随机得到图片序号
+        function getRandom (min, max) {
+            return Math.floor(Math.random() * (max - min +1) + min)
+        }
+        let random = getRandom (1, 6)
+        //获取图片元素
+        let pic = document.querySelector ("img")
+        //完成src属性赋值随机得到图片
+        pic.src = `F:/个人/前端学习/正在学的/2.Web APIs实用案例/Web APIs—资料/day01/day01/代码/images/${random}.webp`
+    </script>
+</body>
+</html>

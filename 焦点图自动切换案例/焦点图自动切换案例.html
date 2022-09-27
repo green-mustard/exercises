@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+        .img-box {
+            position: relative;
+            margin: 100px auto 0;
+            width: 700px;
+            height: 320px;
+        }
+        .tips {
+            position: absolute;
+            /* left: 0; */
+            bottom: 0;
+            width: 100%;
+            height: 46px;
+            background-color: rgba(0, 0, 0, .5);
+        }
+        .tips > h3 {
+            width: 100%;
+            height: 100%;
+            color: rgb(164, 250, 78);
+            font-size: 22px;
+            font-weight: 600;
+            line-height: 46px;
+            margin: 0;
+            padding-left: 20px;
+        }
+    </style>
+  </head>
+  <body>
+    <div class="img-box">
+      <img src="" alt="" class="pic" />
+      <div class="tips">
+        <h3 class="text"></h3>
+      </div>
+    </div>
+
+    <script>
+      //数据
+      let data = [
+        {
+          imgSrc: "images/b01.jpg",
+          title: "挑战云歌单，欢迎你来",
+        },
+        {
+          imgSrc: "images/b02.jpg",
+          title: "田园日记，上演上京记",
+        },
+        {
+          imgSrc: "images/b03.jpg",
+          title: "甜蜜攻势再次回归",
+        },
+        {
+          imgSrc: "images/b04.jpg",
+          title: "我为歌狂，生为歌王",
+        },
+        {
+          imgSrc: "images/b05.jpg",
+          title: "年度校园主题活动",
+        },
+        {
+          imgSrc: "images/b06.jpg",
+          title: "pink老师新歌发布，5月10号正式推出",
+        },
+        {
+          imgSrc: "images/b07.jpg",
+          title: "动力火车来到西安",
+        },
+        {
+          imgSrc: "images/b08.jpg",
+          title: "钢铁侠3，英雄镇东风",
+        },
+        {
+          imgSrc: "images/b09.jpg",
+          title: "我用整颗心来等你",
+        },
+      ];
+      //1. 获取元素（图片和文字）
+      let pic = document.querySelector(".pic");
+      let text = document.querySelector(".text");
+      //设置变量记录图片张数
+      let i = 0;
+      //2. 开启定时器
+      setInterval(function () {
+        i++;
+        //修改图片的src属性
+        pic.src = data[i].imgSrc;
+        //修改文字内容
+        text.innerHTML = data[i].title;
+        //循环播放
+        if (i === data.length - 1) {
+            i = -1
+            // i = 0 次数i重新赋值为0的话，图片会缺少第一张，因为函数是从i++（i === 1）的时候开始的
+        }
+            // i === data.length -1 ? i = -1 : i
+      }, 1000);
+    </script>
+  </body>
+</html>

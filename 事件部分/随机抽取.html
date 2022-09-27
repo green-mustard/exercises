@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .content {
+        width: 300px;
+        height: 80px;
+        border: 1px solid cyan;
+        margin-top: 50px;
+        line-height: 80px;
+        text-align: center;
+        font-size: 26px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="content">请抽取一名小可爱</div>
+    <button class="btn">点击随机抽取</button>
+
+    <script>
+      let arr = ["马超", "黄忠", "赵云", "关羽", "张飞"];
+      function getRandom(max, min) {
+        return Math.floor(Math.random() * (max - min + 1) + min);
+      }
+
+      //1. 获取元素
+      let content = document.querySelector(".content");
+      let btn = document.querySelector(".btn"); 
+      //2. 监听事件并调用事件触发函数
+      btn.addEventListener("click", function () {
+        let random = getRandom(0, arr.length - 1);
+        content.innerHTML = arr[random];
+        content.style.color = 'darkorange'
+        arr.splice(random, 1);
+        if (arr.length < 1) {
+          btn.disabled = true;
+        }
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            margin: 100px auto;
+        }
+        span {
+            display: inline-block;
+            width: 100px;
+            height: 30px;
+            border: 1px solid rgb(68, 168, 168);
+            vertical-align: middle;
+            color: brown;
+            font-size: 600;
+            text-align: center;
+            line-height: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        抽中的选手是：<span></span>
+    </div>
+
+    <script>
+        function getRandom (min,max) {
+            return Math.floor(Math.random() * (max - min + 1) + min)
+        }
+        let arr = ['赵云', '关羽', '张飞', '马超', '黄忠']
+        let random = getRandom (0, arr.length - 1)
+        let box = document.querySelector ('span')
+        box.innerHTML = arr[random]
+        arr.splice (random, 1)
+    </script>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .pw {
+            position: relative;
+            width: 400px;
+            height: 30px;
+            margin: 200px auto 0;
+        }
+        #pw {
+            outline: none;
+            width: 400px;
+            height: 30px;
+            border: 0;
+            border-bottom: 1px solid #ccc;
+            letter-spacing: 10px;
+            padding-left: 10px;
+        }
+        img {
+            position: absolute;
+            top: 3px;
+            right: 0;
+            width: 24px;
+        }
+    </style>
+</head>
+<body>
+    <div class="pw">
+        <input type="password" name="" id="pw">
+        <img src="./images/close.png" alt="">
+    </div>
+
+    <script>
+        let pw = document.querySelector('#pw');
+        let icon = document.querySelector('img');
+        let flag = 0;
+        icon.addEventListener('click', function() {
+            if (flag === 0) {
+            icon.src = './images/open.png'; 
+            pw.type = 'text'
+            flag = 1;
+            }
+            else {
+            icon.src = './images/close.png'; 
+            pw.type = 'password'
+            flag = 0;
+            }
+        })
+
+        //另一种写法：
+        // icon.onclick = function () {
+        //     if (flag === 0) {
+        //     icon.src = './images/open.png'; 
+        //     pw.type = 'text'
+        //     flag = 1;
+        //     }
+        //     else {
+        //     icon.src = './images/close.png'; 
+        //     pw.type = 'password'
+        //     flag = 0;
+        //     }
+        // }
+    </script>
+</body>
+</html>

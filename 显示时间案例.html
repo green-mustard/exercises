@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        h3 {
+            height: 50px;
+            width: 600px;
+            margin: 100px auto 0;
+            text-align: center;
+            line-height: 50px;
+            color:rgb(129, 216, 207);
+        }
+    </style>
+</head>
+<body>
+    <h3></h3>
+    
+    <script>
+        setInterval (function () {
+                    //1. 实例化时间对象
+        let xingqi = ['星期天', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六',]
+        let date = new Date()
+        let year = date.getFullYear()
+        let month = date.getMonth() + 1
+        month = month < 10 ? '0' + month : month
+        let day = date.getDate()
+        day = day < 10 ? '0' + day : day
+        let day1 = date.getDay()
+        let hours = date.getHours()
+        hours = hours < 10 ? '0' + hours : hours
+        let minutes = date.getMinutes()
+        minutes = minutes < 10 ? '0' + minutes : minutes
+        let seconds = date.getSeconds()
+        seconds = seconds < 10 ? '0' + seconds : seconds
+        let p = document.querySelector('h3')
+
+        p.innerHTML = `今天是${year}年${month}月${day}日 ${xingqi[day1]}， ${hours}时${minutes}分${seconds}秒`
+
+        }, 1000)
+    </script>
+</body>
+</html>

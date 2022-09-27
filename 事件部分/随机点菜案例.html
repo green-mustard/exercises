@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      h2 {
+        margin: 100px auto 80px;
+        width: 100px;
+        height: 30px;
+      }
+      .box {
+        margin: 0 auto 20px;
+        width: 350px;
+        height: 50px;
+        font-size: 26px;
+      }
+      span {
+        color: red;
+      }
+      .btn {
+        display: flex;
+        justify-content: space-around;
+        width: 500px;
+        height: 100px;
+        margin: 0 auto;
+      }
+      button {
+        width: 120px;
+        height: 35px;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>随机点菜</h2>
+    <div class="box">今天吃什么：<span class="uname">这里显示内容</span></div>
+    <div class="btn">
+      <button class="start">开始</button>
+      <button class="end">结束</button>
+    </div>
+
+    <script>
+      // 数据数组
+      let arr = [
+        "回锅肉",
+        "糖醋排骨",
+        "鱼香肉丝",
+        "烂肉豌豆",
+        "麻婆豆腐",
+        "红烧肉",
+        "圆子汤",
+        "点外卖",
+        "出去吃",
+      ];
+      function getRandom(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+      }
+
+      //1. 获取需要的元素
+      let content = document.querySelector(".uname");
+      let start = document.querySelector(".start");
+      let end = document.querySelector(".end");
+      //给定时器设置一个全局变量，否则结束案件无法获取。random同理
+      let timer = 0;
+      let random = 0;
+      //2. 给开始按钮注册事件
+      start.addEventListener("click", function () {
+        timer = setInterval(function () {
+          random = getRandom(0, arr.length - 1);
+          content.innerHTML = arr[random];
+        }, 80);
+        // 当数组中的元素全部被抽取出来后，则禁用开始和结束两个按钮
+        if (arr.length === 1) {
+          start.disabled = true;
+          end.disabled = true;
+          //start.disabled = end.disabled = true
+        }
+      });
+      //3. 给结束按钮注册时间
+      end.addEventListener("click", function () {
+        clearInterval(timer);
+        arr.splice(random, 1);
+      });
+    </script>
+  </body>
+</html>

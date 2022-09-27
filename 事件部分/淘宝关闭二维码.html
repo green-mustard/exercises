@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .erweima {
+            position: relative;
+            width: 160px;
+            height: 160px;
+            margin: 100px auto 0;
+            background-image: url(./images/code.png);
+            border: 1px solid #ccc;
+        }
+        .cha {
+            position: absolute;
+            top: 0;
+            left: -16px;
+            width: 14px;
+            height: 14px;
+            border: 1px solid #ccc;
+            color: #ccc;
+            line-height: 9px;
+            cursor: pointer;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="erweima">
+        <div class="cha">x</div>
+    </div>
+
+    <script>
+        //获取元素
+        // let close = document.querySelector('.cha');
+        // let erweima = document.querySelector('.erweima');
+        // //事件监听
+        // close.addEventListener ('click', function () {
+        //     erweima.style.display = "none"
+        // })
+
+        //利用节点查找父元素的写法
+        let close = document.querySelector('.cha');
+        close.addEventListener ('click', function () {
+            this.parentNode.style.display = "none"
+        })
+
+    </script>
+</body>
+</html>
